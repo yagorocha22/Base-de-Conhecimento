@@ -49,7 +49,9 @@ Sinta-se à vontade para sugerir melhorias. Para contribuir, abra uma **Issue** 
 
 ## 📝 Licença
 
-Este projeto está sob a licença [MIT](LICENSE).
+Este projeto está sob a [Licença MIT](LICENSE).
+
+> **Resumo (Não Legal):** Você pode usar, copiar, modificar e distribuir o código deste projeto para fins comerciais ou não. Você deve apenas incluir o aviso de direitos autorais e a permissão (o próprio texto da licença) em todas as cópias ou partes substanciais do software.
 
 ---
 
