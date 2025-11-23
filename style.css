@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); /* Importa a fonte Quicksand do Google Fonts */
+
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+}
+
+:root {
+    /* Paleta de cores inspirada no logo de Pokémon */
+    --pokemon-blue: #363b81;
+    --pokemon-blue-dark: #3b4cca;
+    --pokemon-yellow: #ffde00;
+    --text-light: #ffffff;
+    --text-medium: #a2c3de;
+}
+
+/* Estilos aplicados ao corpo (body) da página */
+body {
+    margin: 0;
+    background: var(--pokemon-blue);
+    color: var(--text-light);
+    font-family: "Quicksand", sans-serif; /* Define a família da fonte */
+}
+
+/* Estilos para o cabeçalho (header) */
+header {
+    padding: 2rem 1rem; /* Espaçamento interno (2rem em cima/baixo, 1rem nos lados) */
+    display: flex; /* Habilita o layout flexbox */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: space-around; /* Distribui os itens com espaço ao redor */
+    position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
+    top: 0; /* Posição do topo quando sticky */
+    background: var(--pokemon-blue-dark); /* Cor de fundo do cabeçalho */
+    z-index: 10; /* Define a ordem de empilhamento para ficar sobre outros elementos */
+    border-bottom: 2px solid var(--pokemon-yellow); /* Adiciona uma borda inferior */
+    gap: 1rem; /* Espaçamento entre os elementos flex */
+}
+
+/* Estilos para o título principal (h1) dentro do cabeçalho */
+header h1 {
+    font-size: 1.5rem; /* Tamanho da fonte */
+    margin: 0; /* Remove a margem padrão */
+    font-weight: 500; /* Peso da fonte (médio) */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+}
+
+/* Estilos para o campo de busca (input) */
+div input {
+    padding: 0.375rem 0.75rem; /* Espaçamento interno */
+    border-radius: 1rem; /* Arredonda as bordas */
+    border: 1px solid var(--text-medium); /* Define a borda */
+    background: var(--pokemon-blue); /* Cor de fundo */
+    font-family: inherit; /* Herda a família da fonte do elemento pai */
+    font-size: 1.5rem; /* Tamanho da fonte */
+    transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
+    width: 30rem; /* Largura do input */
+    color: var(--text-light); /* Cor do texto digitado */
+    margin-right: .5rem; /* Margem à direita */
+}
+
+/* Estilos para o texto de placeholder do input */
+div input::placeholder {
+    font-size: 1.2rem; /* Tamanho da fonte do placeholder */
+    font-weight: 300; /* Peso da fonte do placeholder */
+    color: var(--text-medium); /* Cor do texto do placeholder */
+}
+
+/* Estilos para o input quando está em foco (selecionado) */
+div input:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border-color: var(--pokemon-yellow); /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 0 0.1rem var(--pokemon-yellow); /* Adiciona uma sombra de caixa para indicar foco */
+}
+
+/* Estilos para o botão de busca */
+#botao-busca {
+    padding: 1rem 2rem; /* Espaçamento interno */
+    border-radius: 1rem; /* Arredonda as bordas */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
+    font-family: inherit; /* Herda a família da fonte */
+    font-weight: 500; /* Peso da fonte */
+    font-size: 1rem; /* Tamanho da fonte */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
+    background-color: var(--pokemon-yellow); /* Cor de fundo */
+    color: var(--pokemon-blue-dark); /* Cor do texto */
+    border: 1px solid var(--pokemon-yellow); /* Adiciona uma borda */
+}
+
+/* Estilos para o botão de busca ao passar o mouse sobre ele */
+#botao-busca:hover {
+    background-color: var(--pokemon-blue); /* Muda a cor de fundo ao passar o mouse */
+    color: var(--pokemon-yellow); /* Muda a cor do texto ao passar o mouse */
+    box-shadow: 0 0 0 0.1rem var(--pokemon-yellow); /* Adiciona uma sombra de caixa */
+}
+
+/* Estilos para o botão de busca quando está sendo clicado */
+#botao-busca:active {
+    transform: scale(0.98); /* Efeito de clique (diminui o tamanho) */
+}
+
+/* Estilos para a área de conteúdo principal (main) */
+main {
+    overflow-y: scroll; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder a altura */
+    max-width: 80rem; /* Largura máxima do conteúdo principal */
+    margin: 0 auto; /* Centraliza o conteúdo principal horizontalmente */
+    margin-top: 2rem; /* Margem no topo */
+    height: calc(100vh - 10rem - 4rem); /* Calcula a altura para preencher o espaço restante da tela */
+}
+
+/* Container que agrupa os cards dos Pokémon */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    gap: 1.5rem; /* Espaçamento entre os cards */
+    padding: 0 1rem; /* Espaçamento lateral para o container */
+}
+
+/* Estilos individuais para cada card (article) */
+article {
+    background: var(--pokemon-blue-dark); /* Um fundo ligeiramente diferente para destacar o card */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 1.5rem; /* Espaçamento interno */
+    margin-bottom: 0; /* Remove a margem inferior, o 'gap' cuidará do espaçamento */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    border-bottom: none; /* Remove a borda inferior anterior */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efeito ao passar o mouse sobre um card */
+article:hover {
+    transform: scale(1.01); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para uma mão */
+}
+
+/* Estilo para o nome do Pokémon (h2) dentro do card */
+article h2 {
+    margin-top: 0; /* Remove a margem superior */
+    font-weight: 600; /* Peso da fonte */
+    font-size: 1.6rem; /* Tamanho da fonte */
+    border-bottom: none; /* Sem borda inferior */
+    padding-bottom: 0; /* Sem espaçamento interno inferior */
+    margin-bottom: 0.25rem; /* Margem inferior */
+    color: var(--pokemon-yellow); /* Cor do texto */
+}
+
+/* Estilo para os parágrafos (p) dentro do card */
+article p {
+    margin: 0.5rem 0; /* Margem superior e inferior */
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    font-size: 1rem; /* Tamanho da fonte */
+    margin-bottom: 0.5rem; /* Margem inferior */
+    color: var(--text-light); /* Cor do texto */
+}
+
+/* Estilo para texto em negrito (strong) dentro de um parágrafo do card */
+article p strong {
+    color: var(--text-medium); /* Cor do texto em negrito */
+    font-weight: 400; /* Peso da fonte */
+}
+
+/* Estilo para links (a) dentro do card */
+article a {
+    color: var(--pokemon-yellow); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    font-weight: 200; /* Peso da fonte */
+}
+
+/* Efeito ao passar o mouse sobre um link */
+article a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estilos para o rodapé (footer) */
+.footer {
+    position: absolute; /* Posicionamento absoluto em relação ao elemento pai posicionado */
+    bottom: 0; /* Alinha na parte inferior */
+    left: 0; /* Alinha à esquerda */
+    width: 100%; /* Largura total */
+    color: var(--text-medium); /* Cor do texto */
+    background-color: var(--pokemon-blue-dark); /* Cor de fundo */
+    padding: 15px 20px; /* Espaçamento interno */
+    border-top: 1px solid #3c4043; /* Borda superior */
+    font-size: 0.8rem; /* Tamanho da fonte */
+}
+
+/* Estilo para a localização no rodapé */
+.footer-location {
+    color: #9aa0a6; /* Cor do texto */
+    margin-bottom: 10px; /* Margem inferior */
+}
+
+/* Estilo para a lista de links no rodapé */
+.footer-links {
+    list-style: none; /* Remove os marcadores da lista */
+    display: flex; /* Habilita o layout flexbox */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 15px; /* Espaçamento entre os links */
+}
+
+/* Estilo para os links do rodapé */
+.footer-links a {
+    color: var(--text-light); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.2s; /* Transição suave para a cor */
+}
+
+/* Efeito ao passar o mouse sobre os links do rodapé */
+.footer-links a:hover {
+    color: var(--pokemon-yellow); /* Muda a cor do link ao passar o mouse */
+}
+
+/* Media Query para responsividade em telas menores (tablets) */
+@media (max-width: 768px) {
+    header { /* Estilos para telas com largura máxima de 768px */
+        flex-direction: column; /* Organiza os itens do cabeçalho em coluna */
+        padding: 1rem; /* Reduz o espaçamento interno */
+    }
+
+    header h1 { /* Estilos para o h1 no cabeçalho em telas menores */
+        text-align: center; /* Centraliza o texto */
+        margin-bottom: 1rem; /* Adiciona margem inferior */
+    }
+
+    div input { /* Estilos para o input em telas menores */
+        width: 90vw; /* Largura baseada na largura da viewport */
+        font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    }
+
+    main { /* Estilos para o main em telas menores */
+        padding: 0 1rem; /* Adiciona espaçamento lateral */
+    }
+
+    article:hover { /* Estilos para o article em telas menores */
+        transform: none; /* Remove o efeito de escala ao passar o mouse */
+    }
+
+    .card-container {
+        grid-template-columns: 1fr; /* Volta para uma coluna em telas menores */
+    }
+}
+
+/* Media Query para responsividade em telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+    header h1 { /* Estilos para o h1 em telas com largura máxima de 480px */
+        font-size: 1rem; /* Reduz ainda mais o tamanho da fonte */
+        max-width: 70%; /* Define uma largura máxima */
+        word-wrap: break-word; /* Permite a quebra de palavras longas */
+    }
+
+    div input, /* Estilos para o input e seu placeholder em telas muito pequenas */
+    div input::placeholder {
+        font-size: 1rem; /* Reduz o tamanho da fonte */
+    }
+
+    article h2 { /* Estilos para o h2 do article em telas muito pequenas */
+        font-size: 1.3rem; /* Reduz o tamanho da fonte */
+    }
+
+    div { /* Estilos para a div do cabeçalho em telas muito pequenas */
+        display: flex; /* Habilita flexbox */
+        align-items: center; /* Alinha itens ao centro */
+        justify-content: center; /* Centraliza itens */
+        flex-direction: column; /* Organiza em coluna */
+        gap: 0.5rem; /* Espaçamento entre os itens */
+    }
+
+    .footer { /* Estilos para o rodapé em telas muito pequenas */
+        display: none; /* Oculta o rodapé */
+    }
+
+    button { /* Estilos para o botão em telas muito pequenas */
+        margin-top: 1rem; /* Adiciona margem no topo */
+    }
+}
+
+/* Estilização da barra de rolagem para navegadores baseados em WebKit (Chrome, Safari) */
+::-webkit-scrollbar{
+    width: 12px;
+    background-color: var(--pokemon-blue);
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--pokemon-blue-dark);
+    border-radius: 6px;
+}
+
+.cardP {
+    display: flex;
+    justify-content: space-between;
+}
